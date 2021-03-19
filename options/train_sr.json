@@ -1,0 +1,76 @@
+{
+  "task": "sr"     
+  , "model": "stage" 
+  , "gpu_ids": [6]  
+
+  , "scale": 4      
+  , "n_channels": 3 
+  , "sigma": 0     
+  , "sigma_test": 0  
+
+  , "merge_bn": false             
+  , "merge_bn_startpoint": 400000 
+
+  , "path": {
+    "root": "tsms_dbsr"      
+    , "pretrained_netG0": null      // path of pretrained model
+    , "pretrained_netG1": null
+    , "pretrained_netG2": null
+  }
+
+  , "datasets": {
+    "train": {
+      "name": "train_dataset"      
+      , "dataset_type": "train"     
+      , "dataroot_H": "datasets/train_reds_sharp.lmdb"// path of H training dataset
+      , "dataroot_L": "datasets/train_reds_blur.lmdb"              // path of L training dataset
+      , "H_size": 192                    // patch size 40 | 64 | 96 | 128 | 192
+      , "dataloader_shuffle": true
+      , "dataloader_num_workers": 8
+      , "dataloader_batch_size": 24//48    // batch size 1 | 16 | 32 | 48 | 64 | 128
+    }
+    , "val": {
+      "name": "val_dataset"            // just name
+      , "dataset_type": "val"           
+      , "dataroot_H": "datasets/val_reds_sharp.lmdb"   // path of H testing dataset
+      , "dataroot_L": "datasets/val_reds_blur.lmdb"              // path of L testing dataset
+    }
+  }
+
+  , "netG": {
+    "net_type0": "deblur"    
+    , "net_type1": "sr"    
+    , "net_type2": "tsms"
+    , "in_nc": 3        // input channel number
+    , "out_nc": 3       // ouput channel number
+    , "dn_feats": 128
+    , "dd_feats": 96
+    , "dn_blocks": 12
+    , "n_feats": 128
+    , "n_blocks": 12
+    , "kernel_size": 3 
+    , "init_type": "orthogonal"
+    , "init_bn_type": "uniform"
+    , "init_gain": 0.2
+  }
+
+  , "train": {
+    "G_lossfn_type": "l1"                
+    , "G_lossfn_weight": 1.0           
+
+    , "G_optimizer_type": "adam"       
+    , "G_optimizer_lr": 1e-4         
+    , "G_optimizer_clipgrad": null  
+
+    , "G_scheduler_type": "MultiStepLR" 
+    , "G_scheduler_milestones": [200000, 400000, 600000, 800000, 1000000, 2000000]
+    , "G_scheduler_gamma": 0.5
+
+    , "G_regularizer_orthstep": null   
+    , "G_regularizer_clipstep": null  
+
+    , "checkpoint_test": 1//400    
+    , "checkpoint_save": 1//800   
+    , "checkpoint_print": 200
+  }
+}
