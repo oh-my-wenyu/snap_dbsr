@@ -1,28 +1,28 @@
 {
-  "task": "tsms"     //  root/task/images-models-options
-  , "model": "stage" // "plain" | "plain2" if two inputs
-  , "gpu_ids": [6]  //[4,5,6,7]
+  "task": "tsms"   
+  , "model": "stage" 
+  , "gpu_ids": [0,1] 
 
-  , "scale": 4       // broadcast to "netG" if SISR
-  , "n_channels": 3  // broadcast to "datasets", 1 for grayscale, 3 for color
-  , "sigma": 0       // 15, 25, 50 for DnCNN | [0, 75] for FDnCNN and FFDNet
-  , "sigma_test": 0  // 15, 25, 50 for DnCNN, FDnCNN and FFDNet, 0 for SR
+  , "scale": 4     
+  , "n_channels": 3  
+  , "sigma": 0      
+  , "sigma_test": 0  
 
-  , "merge_bn": false              // if no BN exists, set false
-  , "merge_bn_startpoint": 400000  // merge BN after N iterations
+  , "merge_bn": false            
+  , "merge_bn_startpoint": 400000  
 
   , "path": {
-    "root": "tsms_dbsr"      // "denoising" | "superresolution"
-    , "pretrained_netG0": null      // path of pretrained model
+    "root": "tsms_dbsr"    
+    , "pretrained_netG0": null   
     , "pretrained_netG1": null
-    , "pretrained_netG2":"tsms_dbsr/tsms/models/6_G2.pth" 
+    , "pretrained_netG2":"tsms_dbsr/tsms/models/0_G2.pth" 
   }
 
   , "datasets": {
       "test": {
-      "name": "test_dataset"            // just name
+      "name": "test_dataset"      
       , "dataset_type": "test"            
-      , "dataroot_L": "datasets/test_reds_blur.lmdb"              // path of L testing dataset
+      , "dataroot_L": "datasets/test_reds_blur.lmdb"         
     }
   }
 
@@ -30,8 +30,8 @@
     "net_type0": "deblur"    
     , "net_type1": "sr"    
     , "net_type2": "tsms"
-    , "in_nc": 3        // input channel number
-    , "out_nc": 3       // ouput channel number
+    , "in_nc": 3       
+    , "out_nc": 3      
     , "n_feats_1": 64
     , "n_blocks_1": 12
     , "kernel_size_1":5 
