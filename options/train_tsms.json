@@ -1,7 +1,7 @@
 {
   "task": "tsms"     
   , "model": "stage" 
-  , "gpu_ids": [6]  
+  , "gpu_ids": [0,1]  
 
   , "scale": 4      
   , "n_channels": 3 
@@ -13,7 +13,7 @@
 
   , "path": {
     "root": "tsms_dbsr"      
-    , "pretrained_netG0": null      // path of pretrained model
+    , "pretrained_netG0": null   
     , "pretrained_netG1": null
     , "pretrained_netG2": null
   }
@@ -22,18 +22,18 @@
     "train": {
       "name": "train_dataset"      
       , "dataset_type": "train"     
-      , "dataroot_H": "datasets/train_reds_sharp.lmdb"// path of H training dataset
-      , "dataroot_L": "datasets/train_reds_blur.lmdb"              // path of L training dataset
-      , "H_size": 192                    // patch size 40 | 64 | 96 | 128 | 192
+      , "dataroot_H": "datasets/train_reds_sharp.lmdb"
+      , "dataroot_L": "datasets/train_reds_blur.lmdb"     
+      , "H_size": 192                  
       , "dataloader_shuffle": true
       , "dataloader_num_workers": 8
-      , "dataloader_batch_size": 24//48    // batch size 1 | 16 | 32 | 48 | 64 | 128
+      , "dataloader_batch_size": 64
     }
     , "val": {
-      "name": "val_dataset"            // just name
+      "name": "val_dataset"     
       , "dataset_type": "val"           
-      , "dataroot_H": "datasets/val_reds_sharp.lmdb"   // path of H testing dataset
-      , "dataroot_L": "datasets/val_reds_blur.lmdb"              // path of L testing dataset
+      , "dataroot_H": "datasets/val_reds_sharp.lmdb"   
+      , "dataroot_L": "datasets/val_reds_blur.lmdb"             
     }
   }
 
@@ -41,8 +41,8 @@
     "net_type0": "deblur"    
     , "net_type1": "sr"    
     , "net_type2": "tsms"
-    , "in_nc": 3        // input channel number
-    , "out_nc": 3       // ouput channel number
+    , "in_nc": 3        
+    , "out_nc": 3       
     , "n_feats_1": 64
     , "n_blocks_1": 12
     , "kernel_size_1": 5
@@ -73,8 +73,8 @@
     , "G_regularizer_orthstep": null   
     , "G_regularizer_clipstep": null  
 
-    , "checkpoint_test": 2//400    
-    , "checkpoint_save": 2//800   
+    , "checkpoint_test": 400    
+    , "checkpoint_save": 800   
     , "checkpoint_print": 200
   }
 }
