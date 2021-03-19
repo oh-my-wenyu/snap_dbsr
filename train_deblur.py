@@ -118,7 +118,7 @@ def main(json_path='options/train_deblur.json'):
     model_1.init_train()
     #logger.info(model_1.info_params())
 
-    for epoch in range(100):
+    for epoch in range(10000):
         for i, train_data in enumerate(train_loader):
 
             current_step += 1
