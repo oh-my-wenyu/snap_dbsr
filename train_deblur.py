@@ -18,12 +18,11 @@ from models.select_model_stage import define_Model
 
 
 # --------------------------------------------
-# https://github.com/Zheng222/IMDN
-# https://github.com/xinntao/BasicSR
+# github: https://github.com/cszn/KAIR
 # --------------------------------------------
 
 
-def main(json_path='options/train_deblur.json'):  # imdn,rfdn
+def main(json_path='options/train_deblur.json'):  
 
     '''
     # ----------------------------------------
@@ -119,7 +118,7 @@ def main(json_path='options/train_deblur.json'):  # imdn,rfdn
     model_1.init_train()
     #logger.info(model_1.info_params())
 
-    for epoch in range(100):  # keep running
+    for epoch in range(100):
         for i, train_data in enumerate(train_loader):
 
             current_step += 1
