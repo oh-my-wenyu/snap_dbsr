@@ -18,12 +18,11 @@ from models.select_model_stage import define_Model
 
 
 # --------------------------------------------
-# https://github.com/Zheng222/IMDN
-# https://github.com/xinntao/BasicSR
+# github: https://github.com/cszn/KAIR
 # --------------------------------------------
 
 
-def main(json_path='options/train_sr.json'):  # imdn,rfdn
+def main(json_path='options/train_sr.json'): 
 
     '''
     # ----------------------------------------
@@ -40,14 +39,13 @@ def main(json_path='options/train_sr.json'):  # imdn,rfdn
     # ----------------------------------------
     # update opt
     # ----------------------------------------
-    # -->-->-->-->-->-->-->-->-->-->-->-->-->-
+ 
     init_iter, init_path_G = option.find_last_checkpoint(opt['path']['models'], net_type='G1')
     opt['path']['pretrained_netG1'] = init_path_G
     current_step = init_iter
 
 
     border = opt['scale']
-    # --<--<--<--<--<--<--<--<--<--<--<--<--<-
 
     # ----------------------------------------
     # save opt to  a '../option.json' file
@@ -119,7 +117,7 @@ def main(json_path='options/train_sr.json'):  # imdn,rfdn
     model_1.init_train()
     #logger.info(model_1.info_params())
 
-    for epoch in range(100):  # keep running
+    for epoch in range(100000): 
         for i, train_data in enumerate(train_loader):
 
             current_step += 1
