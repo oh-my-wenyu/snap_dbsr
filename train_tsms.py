@@ -128,7 +128,7 @@ def main(json_path='options/train_tsms.json'):
     # logger.info(model_2.info_network())
     #logger.info(model_2.info_params())
 
-    for epoch in range(1000):  # keep running
+    for epoch in range(100000):  
         for i, train_data in enumerate(train_loader):
 
             current_step += 1
