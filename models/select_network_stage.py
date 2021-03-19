@@ -29,7 +29,7 @@ def define_G(opt,stage0=False,stage1=False,stage2=False):
                    n_scales=opt_net['n_scales'])
 
     # ----------------------------------------
-    # se
+    # sr
     # ----------------------------------------
     elif net_type == 'sr':  # multiscale
         from models.network_sr import SRNet as net
