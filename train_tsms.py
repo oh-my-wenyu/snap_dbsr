@@ -18,12 +18,11 @@ from models.select_model_stage import define_Model
 
 
 # --------------------------------------------
-# https://github.com/Zheng222/IMDN
-# https://github.com/xinntao/BasicSR
+# github: https://github.com/cszn/KAIR
 # --------------------------------------------
 
 
-def main(json_path='options/train_tsms.json'):  # imdn,rfdn
+def main(json_path='options/train_tsms.json'):  
 
     '''
     # ----------------------------------------
@@ -175,9 +174,9 @@ def main(json_path='options/train_tsms.json'):  # imdn,rfdn
 
                 avg_psnr = avg_psnr / idx
 
-                # testing log
-                message_te = '\tTSMS Te_PSNR_avg: {:<.2f}dB'.format(avg_psnr)
-                message = message_tr + message_te
+                # val log
+                message_val = '\tTSMS Te_PSNR_avg: {:<.2f}dB'.format(avg_psnr)
+                message = message_tr + message_val
                 logger.info(message)
    
     logger.info('End of Two-Stage Multi-Scale training.')
