@@ -62,7 +62,7 @@ class DatasetTSMS(data.Dataset):
         img_deblur =util.np2tensor(*img_deblur)
         img_L = img_deblur[0]
         
-        return {'L0':img_L[0], 'ls':img_L, 'L': img_L, 'L_path':L_path}#
+        return {'L0':img_L[0], 'ls':img_L, 'L': img_L, 'L_path':L_path}
 
     def __len__(self):
         return len(self.paths_L)
