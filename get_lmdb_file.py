@@ -11,7 +11,7 @@ import utils.utils_image as util
 
 def main(mode):
     lmdb_path = 'datasets/val_reds_sharp.lmdb'
-    data_path = 'NTIREData/val/val_sharp'#train_blur_bicubic train_sharp /var/var_sharp
+    data_path = 'NTIREData/val/val_sharp'#train_blur_bicubic train_sharp
 
     if mode == 'creating':
         opt = {
